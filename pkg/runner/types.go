@@ -33,7 +33,7 @@ import (
 const (
 	serverImage      = "quay.io/cloud-bulldozer/nginx:latest"
 	serverName       = "nginx"
-	clientImage      = "quay.io/kviswana/ingress-perf:latest"
+	clientImage      = "quay.io/kviswana/ingress-perf:x86"
 	clientName       = "ingress-perf-client"
 	openshiftIngress = "openshift-ingress"
 	sidecarMesh      = "sidecar"
