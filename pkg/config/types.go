@@ -34,7 +34,7 @@ type Config struct {
 	Concurrency int32 `yaml:"concurrency" json:"concurrency"`
 	// Procs processes per client pod
 	Procs int `yaml:"procs" json:"procs"`
-	// Tool defines the tool to run the benchmark scenario. Example: wrk
+	// Tool defines the tool to run the benchmark scenario. Example: go-wrk, wrk, hloader
 	Tool string `yaml:"tool" json:"tool"`
 	// ServerReplicas number of server (nginx) replicas backed by the routes
 	ServerReplicas int32 `yaml:"serverReplicas" json:"serverReplicas"`

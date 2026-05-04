@@ -12,19 +12,19 @@ Ingress-perf configuration is defined in a YAML file, holding an array of the fo
 
 | Field Name       | Type             | Description                                                                                 | Default Value | Tools |
 |------------------|------------------|---------------------------------------------------------------------------------------------|---------------|------------------|
-| `termination`    | `string`         | Benchmark termination. Allowed values are `http`, `edge`, `passthrough` and `reencrypt`.    | N/A           | `wrk`,`hloader` |
-| `connections`    | `int`            | Number of connections per client.                                                           | `0`           | `wrk`,`hloader` |
-| `samples`        | `int`            | Number of samples per scenario.                                                             | `0`           | `wrk`,`hloader` |
-| `duration`       | `time.Duration`  | Duration of each sample.                                                                    | `""`          | `wrk`,`hloader` |
-| `path`           | `string`         | Scenario endpoint path, for example: `/1024.html`, `/2048.html`.                            | `""`          | `wrk`,`hloader` |
-| `concurrency`    | `int32`          | Number of clients that will concurrently run the benchmark scenario.                        | `0`           | `wrk`,`hloader` |
-| `tool`           | `string`         | Tool to run the benchmark scenario.                                                         | `""`          | `wrk`,`hloader` |
-| `serverReplicas` | `int32`          | Number of server (nginx) replicas backed by the routes.                                     | `0`           | `wrk`,`hloader` |
-| `tuningPatch`    | `string`         | Defines a JSON merge tuning patch for the default `IngressController` object.               | `""`          | `wrk`,`hloader` |
-| `delay`          | `time.Duration`  | Delay between samples.                                                                      | `0s`          | `wrk`,`hloader` |
-| `warmup`         | `bool`           | Enables warmup: indexing will be disabled in this scenario.                                 | `false`       | `wrk`,`hloader` |
-| `requestTimeout` | `time.Duration`  | Request timeout                                                                             | `1s`          | `wrk`,`hloader` |
-| `procs`          | `int`            | Number of processes to trigger in each of the client pods                                   | `1`           | `wrk`,`hloader` |
+| `termination`    | `string`         | Benchmark termination. Allowed values are `http`, `edge`, `passthrough` and `reencrypt`.    | N/A           | `wrk`,`go-wrk`,`hloader` |
+| `connections`    | `int`            | Number of connections per client.                                                           | `0`           | `wrk`,`go-wrk`,`hloader` |
+| `samples`        | `int`            | Number of samples per scenario.                                                             | `0`           | `wrk`,`go-wrk`,`hloader` |
+| `duration`       | `time.Duration`  | Duration of each sample.                                                                    | `""`          | `wrk`,`go-wrk`,`hloader` |
+| `path`           | `string`         | Scenario endpoint path, for example: `/1024.html`, `/2048.html`.                            | `""`          | `wrk`,`go-wrk`,`hloader` |
+| `concurrency`    | `int32`          | Number of clients that will concurrently run the benchmark scenario.                        | `0`           | `wrk`,`go-wrk`,`hloader` |
+| `tool`           | `string`         | Tool to run the benchmark scenario.                                                         | `""`          | `wrk`,`go-wrk`,`hloader` |
+| `serverReplicas` | `int32`          | Number of server (nginx) replicas backed by the routes.                                     | `0`           | `wrk`,`go-wrk`,`hloader` |
+| `tuningPatch`    | `string`         | Defines a JSON merge tuning patch for the default `IngressController` object.               | `""`          | `wrk`,`go-wrk`,`hloader` |
+| `delay`          | `time.Duration`  | Delay between samples.                                                                      | `0s`          | `wrk`,`go-wrk`,`hloader` |
+| `warmup`         | `bool`           | Enables warmup: indexing will be disabled in this scenario.                                 | `false`       | `wrk`,`go-wrk`,`hloader` |
+| `requestTimeout` | `time.Duration`  | Request timeout                                                                             | `1s`          | `wrk`,`go-wrk`,`hloader` |
+| `procs`          | `int`            | Number of processes to trigger in each of the client pods                                   | `1`           | `wrk`,`go-wrk`,`hloader` |
 | `keepalive`      | `bool`           | Use HTTP keepalived connections                                                             | `true`        | `hloader`       |
 | `requestRate`    | `int`            | Number of requests per second                                                               | `0` (unlimited) | `hloader`     |
 | `http2`          | `bool`           | Use HTTP2 requests, when possible                                                           | `false`         | `hloader`     |
@@ -32,6 +32,7 @@ Ingress-perf configuration is defined in a YAML file, holding an array of the fo
 ## Supported tools
 
 - wrk: HTTP benchmarking tool. https://github.com/wg/wrk. amd64 and arm64
+- go-wrk: HTTP benchmarking tool written in Go. https://github.com/tsliwowicz/go-wrk. Supports all architectures (amd64, arm64, ppc64le, s390x)
 - hloader: https://github.com/rsevilla87/hloader. amd64, arm64, ppc64le and s390x
 
 ## Quick start
